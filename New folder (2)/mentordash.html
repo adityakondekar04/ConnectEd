@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mentor Dashboard - ConnectEd</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="mentordash.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Sidebar Navigation -->
+        <nav class="sidebar">
+            <div class="sidebar-header">
+                <a href="design4.html" class="logo">
+                    <i class="fas fa-graduation-cap"></i>
+                    <span>ConnectEd</span>
+                </a>
+            </div>
+            <ul class="nav-links">
+                <li class="active">
+                    <a href="#overview"><i class="fas fa-home"></i> Overview</a>
+                </li>
+                <li>
+                    <a href="#mentees"><i class="fas fa-user-graduate"></i> My Mentees</a>
+                </li>
+                <li>
+                    <a href="#sessions"><i class="fas fa-calendar-alt"></i> Sessions</a>
+                </li>
+                <li>
+                    <a href="#resources"><i class="fas fa-book"></i> Resources</a>
+                </li>
+                <li>
+                    <a href="#analytics"><i class="fas fa-chart-bar"></i> Analytics</a>
+                </li>
+                <li>
+                    <a href="#community"><i class="fas fa-users"></i> Community</a>
+                </li>
+                <li>
+                    <a href="#settings"><i class="fas fa-cog"></i> Settings</a>
+                </li>
+            </ul>
+            <div class="sidebar-footer">
+                <a href="#" class="logout-btn">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Logout</span>
+                </a>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Top Bar -->
+            <header class="top-bar">
+                <div class="search-bar">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Search mentees, sessions...">
+                </div>
+                <div class="user-menu">
+                    <div class="notifications">
+                        <i class="fas fa-bell"></i>
+                        <span class="badge">5</span>
+                    </div>
+                    <div class="user-profile">
+                        <img src="https://via.placeholder.com/40" alt="Profile">
+                        <span>Sarah Johnson</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Dashboard Content -->
+            <div class="dashboard-content">
+                <!-- Overview Section -->
+                <section class="overview-section">
+                    <h1>Welcome back, Sarah!</h1>
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <div class="stat-info">
+                                <h3>Active Mentees</h3>
+                                <p>8</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-calendar-check"></i>
+                            </div>
+                            <div class="stat-info">
+                                <h3>Upcoming Sessions</h3>
+                                <p>5</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <div class="stat-info">
+                                <h3>Average Rating</h3>
+                                <p>4.8/5</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div class="stat-info">
+                                <h3>Hours Mentored</h3>
+                                <p>156</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Mentees Section -->
+                <section class="mentees-section">
+                    <h2>My Mentees</h2>
+                    <div class="mentees-grid">
+                        <div class="mentee-card">
+                            <img src="https://via.placeholder.com/60" alt="Mentee">
+                            <div class="mentee-info">
+                                <h3>John Doe</h3>
+                                <p>Web Development Track</p>
+                                <div class="progress-bar">
+                                    <div class="progress" style="width: 75%"></div>
+                                </div>
+                                <span class="progress-text">75% Complete</span>
+                            </div>
+                            <div class="mentee-actions">
+                                <button class="btn-primary"><i class="fas fa-comment"></i> Message</button>
+                                <button class="btn-secondary"><i class="fas fa-calendar-plus"></i> Schedule</button>
+                            </div>
+                        </div>
+                        <div class="mentee-card">
+                            <img src="https://via.placeholder.com/60" alt="Mentee">
+                            <div class="mentee-info">
+                                <h3>Emma Wilson</h3>
+                                <p>Data Science Track</p>
+                                <div class="progress-bar">
+                                    <div class="progress" style="width: 60%"></div>
+                                </div>
+                                <span class="progress-text">60% Complete</span>
+                            </div>
+                            <div class="mentee-actions">
+                                <button class="btn-primary"><i class="fas fa-comment"></i> Message</button>
+                                <button class="btn-secondary"><i class="fas fa-calendar-plus"></i> Schedule</button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Upcoming Sessions -->
+                <section class="sessions-section">
+                    <h2>Upcoming Sessions</h2>
+                    <div class="sessions-grid">
+                        <div class="session-card">
+                            <div class="session-date">
+                                <span class="day">15</span>
+                                <span class="month">Mar</span>
+                            </div>
+                            <div class="session-details">
+                                <h3>Code Review with John</h3>
+                                <p><i class="fas fa-clock"></i> 2:00 PM - 3:00 PM</p>
+                                <p><i class="fas fa-video"></i> Google Meet</p>
+                            </div>
+                            <button class="btn-primary">Start Session</button>
+                        </div>
+                        <div class="session-card">
+                            <div class="session-date">
+                                <span class="day">16</span>
+                                <span class="month">Mar</span>
+                            </div>
+                            <div class="session-details">
+                                <h3>Career Planning with Emma</h3>
+                                <p><i class="fas fa-clock"></i> 11:00 AM - 12:00 PM</p>
+                                <p><i class="fas fa-video"></i> Google Meet</p>
+                            </div>
+                            <button class="btn-primary">Start Session</button>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Analytics Section -->
+                <section class="analytics-section">
+                    <h2>Performance Analytics</h2>
+                    <div class="analytics-grid">
+                        <div class="analytics-card">
+                            <h3>Session Attendance</h3>
+                            <div class="chart-container">
+                                <div class="chart-bar" style="height: 80%">
+                                    <span>Mon</span>
+                                </div>
+                                <div class="chart-bar" style="height: 90%">
+                                    <span>Tue</span>
+                                </div>
+                                <div class="chart-bar" style="height: 75%">
+                                    <span>Wed</span>
+                                </div>
+                                <div class="chart-bar" style="height: 85%">
+                                    <span>Thu</span>
+                                </div>
+                                <div class="chart-bar" style="height: 95%">
+                                    <span>Fri</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="analytics-card">
+                            <h3>Mentee Progress</h3>
+                            <div class="progress-stats">
+                                <div class="progress-stat">
+                                    <span>Average Completion</span>
+                                    <div class="progress-bar">
+                                        <div class="progress" style="width: 85%"></div>
+                                    </div>
+                                </div>
+                                <div class="progress-stat">
+                                    <span>Active Engagement</span>
+                                    <div class="progress-bar">
+                                        <div class="progress" style="width: 92%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Resources Section -->
+                <section class="resources-section">
+                    <h2>Teaching Resources</h2>
+                    <div class="resources-grid">
+                        <div class="resource-card">
+                            <i class="fas fa-book"></i>
+                            <h3>Teaching Materials</h3>
+                            <ul>
+                                <li>Code Review Guidelines</li>
+                                <li>Session Planning Templates</li>
+                                <li>Assessment Tools</li>
+                            </ul>
+                        </div>
+                        <div class="resource-card">
+                            <i class="fas fa-video"></i>
+                            <h3>Best Practices</h3>
+                            <ul>
+                                <li>Effective Mentoring Techniques</li>
+                                <li>Communication Strategies</li>
+                                <li>Progress Tracking Methods</li>
+                            </ul>
+                        </div>
+                        <div class="resource-card">
+                            <i class="fas fa-link"></i>
+                            <h3>Community Resources</h3>
+                            <ul>
+                                <li>Mentor Forum</li>
+                                <li>Resource Library</li>
+                                <li>Training Materials</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <script src="mentordash.js"></script>
+</body>
+</html> 

@@ -23,7 +23,7 @@
                 <a href="#testimonials" class="nav-link">Testimonials</a>
                 <a href="#contact" class="nav-link">Contact</a>
                 <button class="nav-button login-btn" onclick="showLoginModal()">Login</button>
-                <button class="nav-button register-btn" onclick="showRegisterModal()">Register</button>
+                <button class="nav-button register-btn" onclick="showRegistrationModal()">Register</button>
             </div>
             <div class="menu-toggle">
                 <span></span>
@@ -74,33 +74,23 @@
             </div>
         </div>
 
-        <!-- Register Modal -->
-        <div class="modal" id="registerModal">
+        <!-- Registration Modal -->
+        <div class="modal" id="registration-modal">
             <div class="modal-content">
-                <span class="close-modal" onclick="closeRegisterModal()">&times;</span>
-                <h2 class="modal-title">Choose Your Path</h2>
-                <div class="register-options">
-                    <div class="register-option student-option" onclick="window.location.href='register.html?type=student'">
+                <span class="close-modal">&times;</span>
+                <h2>Join ConnectEd</h2>
+                <div class="registration-options">
+                    <div class="option-card">
                         <i class="fas fa-user-graduate"></i>
                         <h3>Student</h3>
-                        <p>Begin your learning journey with expert guidance</p>
-                        <ul class="features-list">
-                            <li><i class="fas fa-check"></i> Access to mentors</li>
-                            <li><i class="fas fa-check"></i> Learning resources</li>
-                            <li><i class="fas fa-check"></i> Career guidance</li>
-                        </ul>
-                        <button class="register-button">Join as Student</button>
+                        <p>Get mentored by industry experts and accelerate your learning journey.</p>
+                        <a href="student-registration.html" class="btn-primary student-register-btn">Join as Student</a>
                     </div>
-                    <div class="register-option mentor-option" onclick="window.location.href='register.html?type=mentor'">
+                    <div class="option-card">
                         <i class="fas fa-chalkboard-teacher"></i>
                         <h3>Mentor</h3>
-                        <p>Share your expertise and shape future leaders</p>
-                        <ul class="features-list">
-                            <li><i class="fas fa-check"></i> Student matching</li>
-                            <li><i class="fas fa-check"></i> Resource sharing</li>
-                            <li><i class="fas fa-check"></i> Community impact</li>
-                        </ul>
-                        <button class="register-button">Become a Mentor</button>
+                        <p>Share your expertise and guide the next generation of professionals.</p>
+                        <a href="mentor-registration.html" class="btn-primary mentor-register-btn">Join as Mentor</a>
                     </div>
                 </div>
             </div>
@@ -219,7 +209,7 @@
                         <li><i class="fas fa-check"></i> Build your network</li>
                         <li><i class="fas fa-check"></i> Track your progress</li>
                     </ul>
-                    <button class="option-button" onclick="showRegisterModal('student')">Register as Student</button>
+                    <button class="option-button" onclick="showRegistrationModal('student')">Register as Student</button>
                 </div>
                 <div class="option-card mentor">
                     <div class="option-icon">
@@ -233,7 +223,7 @@
                         <li><i class="fas fa-check"></i> Expand your network</li>
                         <li><i class="fas fa-check"></i> Make a difference</li>
                     </ul>
-                    <button class="option-button" onclick="showRegisterModal('mentor')">Register as Mentor</button>
+                    <button class="option-button" onclick="showRegistrationModal('mentor')">Register as Mentor</button>
                 </div>
             </div>
         </section>

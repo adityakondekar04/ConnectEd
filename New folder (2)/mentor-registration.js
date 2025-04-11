@@ -172,9 +172,18 @@ prevBtn.addEventListener('click', () => {
     updateFormSteps();
 });
 
+// Submit button click handler
+document.getElementById('submitBtn').addEventListener('click', function(e) {
+    console.log('Submit button clicked');
+    if (validateStep(currentStep)) {
+        form.dispatchEvent(new Event('submit'));
+    }
+});
+
 // Form submission
-form.addEventListener('submit', (e) => {
+form.addEventListener('submit', function(e) {
     e.preventDefault();
+    console.log('Form submitted');
     
     if (validateStep(currentStep)) {
         // Collect all form data
@@ -195,11 +204,23 @@ form.addEventListener('submit', (e) => {
         // Here you would typically send the data to your backend
         console.log('Form submitted:', data);
         
-        // Show success message
-        alert('Registration successful! Welcome to ConnectEd as a Mentor!');
+        // Show completion popup
+        const popup = document.createElement('div');
+        popup.className = 'completion-popup';
+        popup.innerHTML = `
+            <div class="popup-content">
+                <i class="fas fa-check-circle"></i>
+                <h3>Registration Completed!</h3>
+                <p>Your mentor account has been successfully created.</p>
+                <p>Redirecting to dashboard...</p>
+            </div>
+        `;
+        document.body.appendChild(popup);
         
-        // Redirect to main page
-        window.location.href = 'design4.html';
+        // Redirect to mentor dashboard after 2 seconds
+        setTimeout(() => {
+            window.location.href = 'mentordash.html';
+        }, 2000);
     }
 });
 
