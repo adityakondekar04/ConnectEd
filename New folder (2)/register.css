@@ -1,0 +1,355 @@
+:root {
+    --primary: #0A192F;
+    --secondary: #64FFDA;
+    --text: #E6F1FF;
+    --text-secondary: #8892B0;
+    --card-bg: rgba(17, 34, 64, 0.7);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Space Grotesk', sans-serif;
+    background-color: var(--primary);
+    color: var(--text);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+#particles-js {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+    position: relative;
+    z-index: 1;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 3rem;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    color: var(--text);
+    text-decoration: none;
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.logo i {
+    color: var(--secondary);
+    font-size: 1.8rem;
+}
+
+.registration-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.main-title {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    background: linear-gradient(45deg, var(--secondary), #fff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.subtitle {
+    color: var(--text-secondary);
+    font-size: 1.2rem;
+    margin-bottom: 3rem;
+}
+
+.options-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    width: 100%;
+    max-width: 1000px;
+    margin-bottom: 3rem;
+}
+
+.option-card {
+    position: relative;
+    background: var(--card-bg);
+    border-radius: 15px;
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(100, 255, 218, 0.1);
+    transition: all 0.3s ease;
+    height: 100%;
+}
+
+.option-card:hover {
+    transform: translateY(-10px);
+    border-color: var(--secondary);
+    box-shadow: 0 10px 30px rgba(100, 255, 218, 0.1);
+}
+
+.card-content {
+    padding: 2.5rem;
+    position: relative;
+    z-index: 2;
+}
+
+.card-decoration {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.circle {
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0.1;
+}
+
+.student .circle-1 {
+    width: 150px;
+    height: 150px;
+    background: var(--secondary);
+    top: -50px;
+    right: -50px;
+}
+
+.student .circle-2 {
+    width: 100px;
+    height: 100px;
+    background: var(--secondary);
+    bottom: 30px;
+    left: 30px;
+}
+
+.student .circle-3 {
+    width: 70px;
+    height: 70px;
+    background: var(--secondary);
+    bottom: 100px;
+    right: 50px;
+}
+
+.mentor .circle-1 {
+    width: 150px;
+    height: 150px;
+    background: #FF6B6B;
+    top: -50px;
+    right: -50px;
+}
+
+.mentor .circle-2 {
+    width: 100px;
+    height: 100px;
+    background: #FF6B6B;
+    bottom: 30px;
+    left: 30px;
+}
+
+.mentor .circle-3 {
+    width: 70px;
+    height: 70px;
+    background: #FF6B6B;
+    bottom: 100px;
+    right: 50px;
+}
+
+.icon-container {
+    width: 80px;
+    height: 80px;
+    background: rgba(100, 255, 218, 0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem;
+}
+
+.option-card h2 {
+    margin-bottom: 1rem;
+    color: var(--text);
+}
+
+.option-card p {
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+}
+
+.benefits-list {
+    list-style: none;
+    text-align: left;
+    margin-bottom: 2rem;
+}
+
+.benefits-list li {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    margin-bottom: 0.8rem;
+    color: var(--text-secondary);
+}
+
+.benefits-list i {
+    color: var(--secondary);
+}
+
+.register-btn {
+    background: var(--secondary);
+    color: var(--primary);
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 5px;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 100%;
+}
+
+.register-btn:hover {
+    background: #4CD8B2;
+    transform: translateY(-2px);
+}
+
+.back-link {
+    margin-top: 2rem;
+}
+
+.back-link a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.3s ease;
+}
+
+.back-link a:hover {
+    color: var(--secondary);
+}
+
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(10, 25, 47, 0.9);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(5px);
+}
+
+.modal-content {
+    background: var(--card-bg);
+    padding: 2.5rem;
+    border-radius: 15px;
+    width: 90%;
+    max-width: 500px;
+    position: relative;
+    border: 1px solid rgba(100, 255, 218, 0.2);
+    backdrop-filter: blur(10px);
+}
+
+.close-modal {
+    position: absolute;
+    top: 1rem;
+    right: 1.5rem;
+    font-size: 1.5rem;
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.close-modal:hover {
+    color: var(--secondary);
+}
+
+.modal h2 {
+    margin-bottom: 1.5rem;
+    color: var(--text);
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: var(--text);
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 0.8rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(100, 255, 218, 0.2);
+    border-radius: 5px;
+    color: var(--text);
+    font-family: 'Space Grotesk', sans-serif;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: var(--secondary);
+}
+
+.submit-btn {
+    background: var(--secondary);
+    color: var(--primary);
+    border: none;
+    padding: 1rem;
+    border-radius: 5px;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 100%;
+}
+
+.submit-btn:hover {
+    background: #4CD8B2;
+    transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
+    .options-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .main-title {
+        font-size: 2.5rem;
+    }
+    
+    .subtitle {
+        font-size: 1rem;
+    }
+} 
