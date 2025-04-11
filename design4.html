@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ConnectEd - Neural Network Design</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="design4.css">
+</head>
+<body>
+    <div id="particles-js"></div>
+    <div class="content">
+        <nav class="navbar">
+            <div class="logo">
+                <i class="fas fa-graduation-cap"></i>
+                ConnectEd
+            </div>
+            <div class="nav-links">
+                <a href="#home" class="nav-link">Home</a>
+                <a href="#about" class="nav-link">About</a>
+                <a href="#features" class="nav-link">Features</a>
+                <a href="#testimonials" class="nav-link">Testimonials</a>
+                <a href="#contact" class="nav-link">Contact</a>
+                <button class="nav-button login-btn" onclick="showLoginModal()">Login</button>
+                <button class="nav-button register-btn" onclick="showRegisterModal()">Register</button>
+            </div>
+            <div class="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+
+        <!-- Login Modal -->
+        <div class="modal" id="loginModal">
+            <div class="modal-content">
+                <span class="close-modal" onclick="closeLoginModal()">&times;</span>
+                <h2 class="modal-title">Welcome Back</h2>
+                <div class="login-options">
+                    <div class="login-form">
+                        <form id="loginForm">
+                            <div class="form-group">
+                                <label for="loginEmail">Email</label>
+                                <input type="email" id="loginEmail" placeholder="Your email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="loginPassword">Password</label>
+                                <input type="password" id="loginPassword" placeholder="Your password" required>
+                            </div>
+                            <div class="form-options">
+                                <label class="remember-me">
+                                    <input type="checkbox" id="rememberMe">
+                                    <span>Remember me</span>
+                                </label>
+                                <a href="#" class="forgot-password">Forgot password?</a>
+                            </div>
+                            <button type="submit" class="login-button">Login</button>
+                        </form>
+                    </div>
+                    <div class="login-divider">
+                        <span>OR</span>
+                    </div>
+                    <div class="social-login">
+                        <button class="google-login-btn" onclick="loginWithGoogle()">
+                            <i class="fab fa-google"></i>
+                            <span>Login with Google</span>
+                        </button>
+                    </div>
+                    <div class="login-footer">
+                        <p>Don't have an account? <a href="#" onclick="switchToRegister()">Register</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Register Modal -->
+        <div class="modal" id="registerModal">
+            <div class="modal-content">
+                <span class="close-modal" onclick="closeRegisterModal()">&times;</span>
+                <h2 class="modal-title">Choose Your Path</h2>
+                <div class="register-options">
+                    <div class="register-option student-option" onclick="window.location.href='register.html?type=student'">
+                        <i class="fas fa-user-graduate"></i>
+                        <h3>Student</h3>
+                        <p>Begin your learning journey with expert guidance</p>
+                        <ul class="features-list">
+                            <li><i class="fas fa-check"></i> Access to mentors</li>
+                            <li><i class="fas fa-check"></i> Learning resources</li>
+                            <li><i class="fas fa-check"></i> Career guidance</li>
+                        </ul>
+                        <button class="register-button">Join as Student</button>
+                    </div>
+                    <div class="register-option mentor-option" onclick="window.location.href='register.html?type=mentor'">
+                        <i class="fas fa-chalkboard-teacher"></i>
+                        <h3>Mentor</h3>
+                        <p>Share your expertise and shape future leaders</p>
+                        <ul class="features-list">
+                            <li><i class="fas fa-check"></i> Student matching</li>
+                            <li><i class="fas fa-check"></i> Resource sharing</li>
+                            <li><i class="fas fa-check"></i> Community impact</li>
+                        </ul>
+                        <button class="register-button">Become a Mentor</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <section class="hero" id="home">
+            <div class="hero-content">
+                <h1>Connect. Learn. Grow.</h1>
+                <p>Join our network of students and mentors, where knowledge flows freely and connections last a lifetime.</p>
+                <div class="hero-buttons">
+                    <a href="#register-options" class="cta-button">Get Started</a>
+                    <a href="#features" class="secondary-button">Learn More</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="about" id="about">
+            <div class="section-header">
+                <h2>About ConnectEd</h2>
+                <p>Empowering students and mentors to create meaningful connections</p>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>ConnectEd is a revolutionary platform that bridges the gap between students and mentors. Our mission is to create a vibrant community where knowledge flows freely and connections last a lifetime.</p>
+                    <p>Founded in 2023, we've already helped thousands of students find their perfect mentors and guided countless professionals in sharing their expertise.</p>
+                    <div class="stats">
+                        <div class="stat-item">
+                            <span class="stat-number">10,000+</span>
+                            <span class="stat-label">Active Students</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">2,500+</span>
+                            <span class="stat-label">Expert Mentors</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">50+</span>
+                            <span class="stat-label">Universities</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-features">
+                    <div class="about-feature">
+                        <i class="fas fa-rocket"></i>
+                        <h3>Fast Growth</h3>
+                        <p>Join our rapidly expanding community of learners and mentors</p>
+                    </div>
+                    <div class="about-feature">
+                        <i class="fas fa-shield-alt"></i>
+                        <h3>Secure Platform</h3>
+                        <p>Your data and interactions are protected with enterprise-grade security</p>
+                    </div>
+                    <div class="about-feature">
+                        <i class="fas fa-globe"></i>
+                        <h3>Global Reach</h3>
+                        <p>Connect with mentors and students from around the world</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="features" id="features">
+            <div class="section-header">
+                <h2>Our Features</h2>
+                <p>Discover what makes ConnectEd unique</p>
+            </div>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <i class="fas fa-brain"></i>
+                    <h3>Smart Matching</h3>
+                    <p>Our AI-powered system matches you with the perfect mentors based on your learning goals.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-graduation-cap"></i>
+                    <h3>Expert Mentors</h3>
+                    <p>Connect with industry experts and experienced educators who are passionate about sharing knowledge.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-chart-line"></i>
+                    <h3>Track Progress</h3>
+                    <p>Monitor your learning journey with detailed analytics and progress tracking tools.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-comments"></i>
+                    <h3>Community Forums</h3>
+                    <p>Engage with peers and mentors in topic-specific forums to expand your knowledge.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-calendar-check"></i>
+                    <h3>Schedule Sessions</h3>
+                    <p>Easily book and manage mentoring sessions with our integrated calendar system.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-certificate"></i>
+                    <h3>Certification</h3>
+                    <p>Earn recognized certifications as you complete learning milestones.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Registration Options Section -->
+        <section class="register-options" id="register-options">
+            <div class="section-header">
+                <h2>Choose Your Path</h2>
+                <p>Join our community as either a student or a mentor</p>
+            </div>
+            <div class="options-container">
+                <div class="option-card student">
+                    <div class="option-icon">
+                        <i class="fas fa-user-graduate"></i>
+                    </div>
+                    <h3>Join as a Student</h3>
+                    <p>Connect with experienced mentors who can guide you through your academic and professional journey.</p>
+                    <ul class="option-benefits">
+                        <li><i class="fas fa-check"></i> Find your perfect mentor match</li>
+                        <li><i class="fas fa-check"></i> Access expert guidance</li>
+                        <li><i class="fas fa-check"></i> Build your network</li>
+                        <li><i class="fas fa-check"></i> Track your progress</li>
+                    </ul>
+                    <button class="option-button" onclick="showRegisterModal('student')">Register as Student</button>
+                </div>
+                <div class="option-card mentor">
+                    <div class="option-icon">
+                        <i class="fas fa-chalkboard-teacher"></i>
+                    </div>
+                    <h3>Join as a Mentor</h3>
+                    <p>Share your expertise and help shape the next generation of professionals.</p>
+                    <ul class="option-benefits">
+                        <li><i class="fas fa-check"></i> Share your knowledge</li>
+                        <li><i class="fas fa-check"></i> Build your reputation</li>
+                        <li><i class="fas fa-check"></i> Expand your network</li>
+                        <li><i class="fas fa-check"></i> Make a difference</li>
+                    </ul>
+                    <button class="option-button" onclick="showRegisterModal('mentor')">Register as Mentor</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="testimonials" id="testimonials">
+            <div class="section-header">
+                <h2>What Our Users Say</h2>
+                <p>Hear from students and mentors who have experienced ConnectEd</p>
+            </div>
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <i class="fas fa-quote-left"></i>
+                        <p>"ConnectEd transformed my learning journey. My mentor provided invaluable guidance that helped me land my dream job."</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <img src="" alt="Aarya ">
+                        <div class="author-info">
+                            <h4>Aarya</h4>
+                            <p>Computer Science Student</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <i class="fas fa-quote-left"></i>
+                        <p>"As a mentor, I've found great fulfillment in sharing my knowledge. The platform makes it easy to connect with motivated students."</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <img src=""" alt="Aditya Kondekar">
+                        <div class="author-info">
+                            <h4>Aditya Kondekar</h4>
+                            <p>CEO, Google</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <i class="fas fa-quote-left"></i>
+                        <p>"The smart matching algorithm connected me with a mentor who perfectly understood my learning style and career goals."</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <img src="" alt="Aditya Pundlik">
+                        <div class="author-info">
+                            <h4>Aditya Pundlik</h4>
+                            <p>CEO, Microsoft</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="contact" id="contact">
+            <div class="section-header">
+                <h2>Get In Touch</h2>
+                <p>Have questions? We'd love to hear from you</p>
+            </div>
+            <div class="contact-container">
+                <div class="contact-form">
+                    <form>
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" placeholder="Your name">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" placeholder="Your email">
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <input type="text" id="subject" placeholder="Subject">
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" placeholder="Your message"></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn">Send Message</button>
+                    </form>
+                </div>
+                <div class="contact-info">
+                    <div class="info-card">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <h3>Location</h3>
+                        <p>12,Pune</p>
+                    </div>
+                    <div class="info-card">
+                        <i class="fas fa-envelope"></i>
+                        <h3>Email</h3>
+                        <p>info@connected.edu</p>
+                    </div>
+                    <div class="info-card">
+                        <i class="Phone"></i>
+                        <h3>Phone</h3>
+                        <p>94020202848</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>ConnectEd</h3>
+                    <p>Connecting students with mentors for a brighter future.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <a href="#home">Home</a>
+                    <a href="#about">About</a>
+                    <a href="#features">Features</a>
+                    <a href="#testimonials">Testimonials</a>
+                    <a href="#contact">Contact</a>
+                </div>
+                <div class="footer-section">
+                    <h3>Resources</h3>
+                    <div class="footer-resources">
+                        <a href="#"><i class="fas fa-book"></i> Learning Center</a>
+                        <a href="#"><i class="fas fa-question-circle"></i> FAQ</a>
+                        <a href="#"><i class="fas fa-file-alt"></i> Documentation</a>
+                        <a href="#"><i class="fas fa-graduation-cap"></i> Student Guide</a>
+                        <a href="#"><i class="fas fa-chalkboard-teacher"></i> Mentor Guide</a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact Us</h3>
+                    <div class="footer-contact">
+                        <p><i class="fas fa-envelope"></i> info@connected.edu</p>
+                        <p><i class="fas fa-phone"></i> 9472917457</p>
+                        <p><i class="fas fa-map-marker-alt"></i> 123 Mumbai</p>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 ConnectEd. All rights reserved.</p>
+            </div>
+        </footer>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="design4.js"></script>
+</body>
+</html> 

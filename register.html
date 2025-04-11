@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Join ConnectEd - Choose Your Path</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="register.css">
+</head>
+<body>
+    <div id="particles-js"></div>
+    
+    <div class="container">
+        <header>
+            <a href="design4.html" class="logo">
+                <i class="fas fa-graduation-cap"></i>
+                ConnectEd
+            </a>
+        </header>
+        
+        <main class="registration-container">
+            <h1 class="main-title">Choose Your Path</h1>
+            <p class="subtitle">Join our community and start your journey today</p>
+            
+            <div class="options-container">
+                <div class="option-card student">
+                    <div class="card-content">
+                        <div class="icon-container">
+                            <i class="fas fa-user-graduate"></i>
+                        </div>
+                        <h2>Join as a Student</h2>
+                        <p>Connect with experienced mentors who can guide your academic and professional journey.</p>
+                        <ul class="benefits-list">
+                            <li><i class="fas fa-check"></i> Find your perfect mentor match</li>
+                            <li><i class="fas fa-check"></i> Access expert guidance</li>
+                            <li><i class="fas fa-check"></i> Build your network</li>
+                            <li><i class="fas fa-check"></i> Track your progress</li>
+                        </ul>
+                        <button class="register-btn" onclick="showStudentForm()">Register as Student</button>
+                    </div>
+                    <div class="card-decoration">
+                        <div class="circle circle-1"></div>
+                        <div class="circle circle-2"></div>
+                        <div class="circle circle-3"></div>
+                    </div>
+                </div>
+                
+                <div class="option-card mentor">
+                    <div class="card-content">
+                        <div class="icon-container">
+                            <i class="fas fa-chalkboard-teacher"></i>
+                        </div>
+                        <h2>Join as a Mentor</h2>
+                        <p>Share your expertise and help shape the next generation of professionals.</p>
+                        <ul class="benefits-list">
+                            <li><i class="fas fa-check"></i> Share your knowledge</li>
+                            <li><i class="fas fa-check"></i> Build your reputation</li>
+                            <li><i class="fas fa-check"></i> Expand your network</li>
+                            <li><i class="fas fa-check"></i> Make a difference</li>
+                        </ul>
+                        <button class="register-btn" onclick="showMentorForm()">Register as Mentor</button>
+                    </div>
+                    <div class="card-decoration">
+                        <div class="circle circle-1"></div>
+                        <div class="circle circle-2"></div>
+                        <div class="circle circle-3"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="back-link">
+                <a href="design4.html"><i class="fas fa-arrow-left"></i> Back to Home</a>
+            </div>
+        </main>
+    </div>
+    
+    <!-- Student Registration Form Modal -->
+    <div class="modal" id="studentModal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeStudentModal()">&times;</span>
+            <h2>Student Registration</h2>
+            <form id="studentForm">
+                <div class="form-group">
+                    <label for="studentName">Full Name</label>
+                    <input type="text" id="studentName" placeholder="Your full name" required>
+                </div>
+                <div class="form-group">
+                    <label for="studentEmail">Email</label>
+                    <input type="email" id="studentEmail" placeholder="Your email" required>
+                </div>
+                <div class="form-group">
+                    <label for="studentPassword">Password</label>
+                    <input type="password" id="studentPassword" placeholder="Create a password" required>
+                </div>
+                <div class="form-group">
+                    <label for="university">University</label>
+                    <input type="text" id="university" placeholder="Your university" required>
+                </div>
+                <div class="form-group">
+                    <label for="major">Major</label>
+                    <input type="text" id="major" placeholder="Your field of study" required>
+                </div>
+                <div class="form-group">
+                    <label for="year">Year of Study</label>
+                    <select id="year" required>
+                        <option value="">Select your year</option>
+                        <option value="freshman">Freshman</option>
+                        <option value="sophomore">Sophomore</option>
+                        <option value="junior">Junior</option>
+                        <option value="senior">Senior</option>
+                        <option value="graduate">Graduate</option>
+                    </select>
+                </div>
+                <button type="submit" class="submit-btn">Create Account</button>
+            </form>
+        </div>
+    </div>
+    
+    <!-- Mentor Registration Form Modal -->
+    <div class="modal" id="mentorModal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeMentorModal()">&times;</span>
+            <h2>Mentor Registration</h2>
+            <form id="mentorForm">
+                <div class="form-group">
+                    <label for="mentorName">Full Name</label>
+                    <input type="text" id="mentorName" placeholder="Your full name" required>
+                </div>
+                <div class="form-group">
+                    <label for="mentorEmail">Email</label>
+                    <input type="email" id="mentorEmail" placeholder="Your email" required>
+                </div>
+                <div class="form-group">
+                    <label for="mentorPassword">Password</label>
+                    <input type="password" id="mentorPassword" placeholder="Create a password" required>
+                </div>
+                <div class="form-group">
+                    <label for="expertise">Area of Expertise</label>
+                    <input type="text" id="expertise" placeholder="Your expertise (e.g., Computer Science, Business)" required>
+                </div>
+                <div class="form-group">
+                    <label for="experience">Years of Experience</label>
+                    <input type="number" id="experience" placeholder="Years of professional experience" required>
+                </div>
+                <div class="form-group">
+                    <label for="company">Current Company/Organization</label>
+                    <input type="text" id="company" placeholder="Where you work" required>
+                </div>
+                <button type="submit" class="submit-btn">Create Account</button>
+            </form>
+        </div>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="register.js"></script>
+</body>
+</html> 
