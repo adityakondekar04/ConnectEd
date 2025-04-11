@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="center-content">
+    <h2>Register as:</h2>
+    <a href="{% url 'student_register' %}"><button>Student</button></a>
+    <a href="{% url 'alumni_register' %}"><button>Alumni</button></a>
+</div>
+{% endblock %}

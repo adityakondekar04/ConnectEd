@@ -1,0 +1,21 @@
+/* Light Theme (Default) */
+:root[data-theme="light"] {
+    --bg-primary: #f8f9fa;
+    --bg-secondary: #ffffff;
+    --text-primary: #333333;
+    --text-secondary: #666666;
+    --card-bg: #ffffff;
+    --nav-bg: #ffffff;
+    --nav-text: #333333;
+}
+
+/* Dark Theme */
+:root[data-theme="dark"] {
+    --bg-primary: #1a1d21;
+    --bg-secondary: #252a2e;
+    --text-primary: #e9ecef;
+    --text-secondary: #adb5bd;
+    --card-bg: #2b3035;
+    --nav-bg: #2b3035;
+    --nav-text: #e9ecef;
+}
