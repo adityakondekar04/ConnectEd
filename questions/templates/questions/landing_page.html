@@ -1,0 +1,25 @@
+{% extends 'questions/base.html' %}
+
+{% block title %}Welcome{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header bg-primary text-white">
+                <h2 class="mb-0">Welcome</h2>
+            </div>
+            <div class="card-body">
+                <p class="mb-4">Please select your role to proceed:</p>
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="d-grid gap-3">
+                        <button type="submit" name="role" value="student" class="btn btn-outline-primary btn-lg">I am a Student</button>
+                        <button type="submit" name="role" value="alumni" class="btn btn-outline-success btn-lg">I am an Alumni</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

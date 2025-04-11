@@ -1,0 +1,112 @@
+{% extends 'questions/base.html' %}
+
+{% block title %}Submit Interview Question{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-header bg-primary text-white">
+                <h2 class="mb-0">Submit an Interview Question</h2>
+            </div>
+            <div class="card-body">
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="mb-4">
+                        <label for="question_text" class="form-label fw-bold">Interview Question</label>
+                        <textarea class="form-control" id="question_text" name="question_text" rows="4" 
+                            placeholder="Enter the interview question here..." required></textarea>
+                    </div>
+                    <div class="mb-4">
+                        <label for="answer" class="form-label fw-bold">Answer</label>
+                        <textarea class="form-control" id="answer" name="answer" rows="4" 
+                            placeholder="Enter the answer to the interview question here..."></textarea>
+                        <div class="d-flex justify-content-between align-items-center mt-2">
+                            <div class="form-text">Optional: Provide the answer if you know it</div>
+                            <button type="button" class="btn btn-outline-primary" id="generate-answer">
+                                <i class="bi bi-robot"></i> Generate with AI
+                            </button>
+                        </div>
+                    </div>
+                    <div class="mb-4">
+                        <label for="college" class="form-label fw-bold">College</label>
+                        <input type="text" class="form-control" id="college" name="college" 
+                            placeholder="Enter your college name (e.g., MMCOE Pune)" required>
+                    </div>
+                    <div class="mb-4">
+                        <label for="company_name" class="form-label fw-bold">Company Name</label>
+                        <input type="text" class="form-control" id="company_name" name="company_name" 
+                            list="company-list" placeholder="Enter company name" required>
+                        <datalist id="company-list">
+                            {% for company in companies %}
+                                <option value="{{ company }}">
+                            {% endfor %}
+                        </datalist>
+                    </div>
+                    <div class="mb-4">
+                        <label for="year_asked" class="form-label fw-bold">Year Asked</label>
+                        <input type="number" class="form-control" id="year_asked" name="year_asked" 
+                            min="2000" max="{{ years.0 }}" value="{{ years.0 }}"
+                            placeholder="Enter Year (e.g., 2024)" required>
+                        <div class="form-text">Enter a year between 2000 and {{ years.0 }}</div>
+                    </div>
+                    <div class="mb-4">
+                        <label for="job_role" class="form-label fw-bold">Job Role (Optional)</label>
+                        <input type="text" class="form-control" id="job_role" name="job_role" 
+                            placeholder="e.g., Software Engineer, Data Scientist">
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-lg">Submit Question</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const generateButton = document.getElementById('generate-answer');
+    const questionInput = document.getElementById('question_text');
+    const answerInput = document.getElementById('answer');
+    const csrfToken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+
+    generateButton.addEventListener('click', async function() {
+        const question = questionInput.value.trim();
+        
+        if (!question) {
+            alert('Please enter an interview question first!');
+            return;
+        }
+
+        // Show loading state
+        generateButton.disabled = true;
+        generateButton.innerHTML = '<i class="bi bi-hourglass-split"></i> Generating...';
+        
+        try {
+            const response = await fetch('/generate-answer/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': csrfToken
+                },
+                body: JSON.stringify({ question: question })
+            });
+
+            const data = await response.json();
+            
+            if (response.ok) {
+                answerInput.value = data.answer;
+            } else {
+                alert('Error: ' + (data.error || 'Failed to generate answer'));
+            }
+        } catch (error) {
+            alert('Error: Failed to connect to the server');
+            console.error('Error:', error);
+        } finally {
+            // Reset button state
+            generateButton.disabled = false;
+            generateButton.innerHTML = '<i class="bi bi-robot"></i> Generate with AI';
+        }
+    });
+});
+</script>
+{% endblock %}

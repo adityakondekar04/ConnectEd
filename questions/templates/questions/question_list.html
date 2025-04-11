@@ -1,0 +1,85 @@
+{% extends 'questions/base.html' %}
+
+{% block title %}Browse Interview Questions{% endblock %}
+
+{% block content %}
+<div class="row mb-4">
+    <div class="col-md-3">
+        <form method="get">
+            <div class="mb-3">
+                <label for="college" class="form-label">Filter by College</label>
+                <select class="form-select" id="college" name="college">
+                    <option value="">All Colleges</option>
+                    {% for college in colleges %}
+                        <option value="{{ college }}" {% if selected_college == college %}selected{% endif %}>
+                            {{ college }}
+                        </option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="company" class="form-label">Filter by Company</label>
+                <select class="form-select" id="company" name="company">
+                    <option value="">All Companies</option>
+                    {% for company in companies %}
+                        <option value="{{ company }}" {% if selected_company == company %}selected{% endif %}>
+                            {{ company }}
+                        </option>
+                    {% endfor %}
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Apply Filters</button>
+        </form>
+    </div>
+    <div class="col-md-9">
+        {% if questions %}
+            {% for question in questions %}
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ question.company_name }}</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">
+                            {{ question.college }} - {{ question.year_asked }}
+                            {% if question.job_role %}
+                                | {{ question.job_role }}
+                            {% endif %}
+                        </h6>
+                        <p class="card-text">{{ question.question_text }}</p>
+                        {% if question.answer %}
+                            <p class="card-text"><strong>Answer:</strong> {{ question.answer }}</p>
+                        {% endif %}
+                    </div>
+                </div>
+            {% endfor %}
+
+            <!-- Pagination -->
+            {% if is_paginated %}
+            <nav aria-label="Page navigation" class="mt-4">
+                <ul class="pagination justify-content-center">
+                    {% if page_obj.has_previous %}
+                        <li class="page-item">
+                            <a class="page-link" href="?page={{ page_obj.previous_page_number }}&college={{ selected_college }}&company={{ selected_company }}">&laquo; Previous</a>
+                        </li>
+                    {% endif %}
+
+                    {% for num in page_obj.paginator.page_range %}
+                        <li class="page-item {% if page_obj.number == num %}active{% endif %}">
+                            <a class="page-link" href="?page={{ num }}&college={{ selected_college }}&company={{ selected_company }}">{{ num }}</a>
+                        </li>
+                    {% endfor %}
+
+                    {% if page_obj.has_next %}
+                        <li class="page-item">
+                            <a class="page-link" href="?page={{ page_obj.next_page_number }}&college={{ selected_college }}&company={{ selected_company }}">Next &raquo;</a>
+                        </li>
+                    {% endif %}
+                </ul>
+            </nav>
+            {% endif %}
+        {% else %}
+            <div class="alert alert-info">
+                No interview questions found. Try adjusting the filters or <a href="{% url 'questions:submit_question' %}">submit a new question</a>.
+            </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
