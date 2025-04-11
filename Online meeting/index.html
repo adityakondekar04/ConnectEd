@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Meeting Link Generator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #c3ecf8, #d4fc79);
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      color: #333;
+    }
+
+    .container {
+      text-align: center;
+      background-color: white;
+      padding: 40px;
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+      border-radius: 12px;
+      width: 100%;
+      max-width: 550px;
+    }
+
+    h1 {
+      font-size: 26px;
+      margin-bottom: 25px;
+      color: #4CAF50;
+    }
+
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: bold;
+    }
+
+    input[type="datetime-local"],
+    input[type="number"],
+    input[type="email"],
+    select {
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+      margin-top: 8px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      box-sizing: border-box;
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 12px 30px;
+      font-size: 16px;
+      color: white;
+      background-color: #4CAF50;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+
+    #linksContainer {
+      margin-top: 20px;
+      display: none;
+    }
+
+    .link {
+      display: block;
+      margin: 10px 0;
+      font-size: 18px;
+      text-decoration: none;
+      color: #007BFF;
+    }
+
+    .link:hover {
+      text-decoration: underline;
+    }
+
+    #confirmationMessage {
+      margin-top: 20px;
+      font-size: 18px;
+      color: #ff9800;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>Generate and Schedule Meeting Links</h1>
+
+    <label for="meetingDateTime">Select Date and Time:</label>
+    <input type="datetime-local" id="meetingDateTime" name="meetingDateTime">
+
+    <label for="timezone">Select Timezone:</label>
+    <select id="timezone">
+      <option value="Asia/Kolkata">Asia/Kolkata (IST)</option>
+      <option value="America/New_York">America/New_York (EST)</option>
+      <option value="Europe/London">Europe/London (GMT)</option>
+      <option value="Asia/Tokyo">Asia/Tokyo (JST)</option>
+      <option value="Australia/Sydney">Australia/Sydney (AEST)</option>
+    </select>
+
+    <label>
+      <input type="checkbox" id="recurring"> Is this a recurring meeting?
+    </label>
+
+    <label for="duration">Meeting Duration (Minutes):</label>
+    <input type="number" id="duration" placeholder="Duration in minutes" min="1">
+
+    <label for="email">Enter your email for a reminder:</label>
+    <input type="email" id="email" placeholder="youremail@example.com">
+
+    <button id="generateLink">Generate Links</button>
+
+    <div id="confirmationMessage" style="display: none;">
+      <p>The meeting link will be generated on <strong><span id="scheduledTime"></span></strong></p>
+    </div>
+
+    <div id="linksContainer">
+      <p><strong>Scheduled Meeting Date and Time:</strong> <span id="meetingTime"></span></p>
+      <p><strong>Zoom Link:</strong> <a id="zoomLink" class="link" href="#" target="_blank"></a></p>
+      <p><strong>Google Meet Link:</strong> <a id="meetLink" class="link" href="#" target="_blank"></a></p>
+    </div>
+  </div>
+
+  <script>
+    function generateRandomMeetingId() {
+      const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+      let meetingId = '';
+      for (let i = 0; i < 10; i++) {
+        meetingId += characters.charAt(Math.floor(Math.random() * characters.length));
+      }
+      return meetingId;
+    }
+
+    document.getElementById('generateLink').addEventListener('click', function () {
+      const meetingDateTime = document.getElementById('meetingDateTime').value;
+      const timezone = document.getElementById('timezone').value;
+      const isRecurring = document.getElementById('recurring').checked;
+      const duration = document.getElementById('duration').value;
+      const email = document.getElementById('email').value;
+
+      if (!meetingDateTime) {
+        alert('Please select a date and time for the meeting.');
+        return;
+      }
+
+      const meetingId = generateRandomMeetingId();
+      const zoomLink = `https://zoom.us/j/${meetingId}`;
+      const meetLink = `https://meet.google.com/${meetingId}`;
+
+      document.getElementById('zoomLink').textContent = zoomLink;
+      document.getElementById('zoomLink').href = zoomLink;
+      document.getElementById('meetLink').textContent = meetLink;
+      document.getElementById('meetLink').href = meetLink;
+
+      const formattedDate = new Date(meetingDateTime).toLocaleString("en-US", { timeZone: timezone });
+      document.getElementById('meetingTime').textContent = formattedDate;
+      document.getElementById('scheduledTime').textContent = formattedDate;
+
+      document.getElementById('linksContainer').style.display = 'block';
+      document.getElementById('confirmationMessage').style.display = 'block';
+
+      if (isRecurring) {
+        alert('This is a recurring meeting. Links will be generated for each occurrence.');
+      }
+
+      if (email) {
+        alert(`A notification will be sent to ${email} with the meeting details.`);
+        // Placeholder: Integrate email API here if needed
+      }
+    });
+  </script>
+
+</body>
+</html>
